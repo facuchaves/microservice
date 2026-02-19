@@ -109,5 +109,6 @@
     "reportPath": "coverage",
     "reportFile": "test-reporter.xml",
     "indent": 4
-  }
+  },
+  "packageManager": "yarn@4.12.0"
 }
