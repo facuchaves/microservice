@@ -82,7 +82,7 @@ jobs:
         run: |
           # Empaquetamos todo (incluyendo appspec.yml y scripts/)
           zip -r deploy_package.zip dist/ node_modules/ package.json appspec.yml scripts/
-          aws s3 cp deploy_package.zip s3://nombre-de-tu-bucket/deploy_package.zip
+          aws s3 cp deploy_package.zip s3://microservice-bucket-2/deploy_package.zip
 
       - name: Update Version in AWS
         run: |
@@ -91,6 +91,6 @@ jobs:
       - name: Create CodeDeploy Deployment
         run: |
           aws deploy create-deployment \
-            --application-name MiNestApp \
-            --deployment-group-name MiGrupoProduccion \
-            --s3-location bucket=nombre-de-tu-bucket,key=deploy_package.zip,bundleType=zip
+            --application-name microservice \
+            --deployment-group-name microservice-deployment-group \
+            --s3-location bucket=microservice-bucket-2,key=deploy_package.zip,bundleType=zip
